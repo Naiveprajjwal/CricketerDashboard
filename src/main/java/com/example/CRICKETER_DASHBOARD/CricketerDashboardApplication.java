@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CricketerDashboardApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CricketerDashboardApplication.class, args);
 	}
 

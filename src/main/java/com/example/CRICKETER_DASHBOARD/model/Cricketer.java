@@ -11,5 +11,6 @@ public class Cricketer {
     private String name;
     private int age;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "playerstats_id")
     private Playerstats stats;
 }

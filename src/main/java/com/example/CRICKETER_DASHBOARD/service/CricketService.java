@@ -4,6 +4,8 @@ import com.example.CRICKETER_DASHBOARD.repository.CricketerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CricketService {
     @Autowired
@@ -14,6 +16,8 @@ public class CricketService {
 
         return cricketerrespository.save(cricketer);
         }
-
+    public Optional<Cricketer> getCricketerById(int id) {
+        return cricketerrespository.findById(id);
+    }
 
 }

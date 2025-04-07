@@ -19,5 +19,20 @@ public class CricketService {
     public Optional<Cricketer> getCricketerById(int id) {
         return cricketerrespository.findById(id);
     }
+    public Cricketer updateCricketer(int id, Cricketer updatedCricketer) {
+        return cricketerrespository.findById(id).map(cricketer -> {
+            cricketer.setName(updatedCricketer.getName());
+            cricketer.setAge(updatedCricketer.getAge());
+            cricketer.setStats(updatedCricketer.getStats());
+            return cricketerrespository.save(cricketer);
+        }).orElse(null);
+    }
+    public boolean deleteCricketer(int id) {
+        if (cricketerrespository.existsById(id)) {
+            cricketerrespository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 
 }

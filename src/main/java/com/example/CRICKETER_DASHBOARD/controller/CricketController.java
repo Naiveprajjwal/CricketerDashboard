@@ -33,4 +33,19 @@ public class CricketController {
         return cricketer.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Cricketer> updateCricketer(@PathVariable int id, @RequestBody Cricketer updatedCricketer) {
+        Cricketer cricketer = cricketerService.updateCricketer(id, updatedCricketer);
+        if (cricketer != null) {
+            return ResponseEntity.ok(cricketer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCricketer(@PathVariable int id) {
+        boolean deleted = cricketerService.deleteCricketer(id);
+        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
 }
